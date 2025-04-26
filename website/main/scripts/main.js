@@ -27,7 +27,7 @@ async function connectWallet() {
 // Function to load section content dynamically
 function loadSection(section) {
     const container = document.getElementById('content-container');
-    container.innerHTML = '<p>Loading...</p>'; // Show loading message
+    container.innerHTML = '<p>Loading...</p>';
     fetch(`sections/${section}.html`)
         .then(response => {
             if (!response.ok) throw new Error(`Failed to load ${section} section: ${response.statusText}`);
@@ -35,7 +35,6 @@ function loadSection(section) {
         })
         .then(html => {
             container.innerHTML = html;
-            // Attach event listeners specific to each section
             if (section === 'home') {
                 const connectButton = document.getElementById('connect-wallet');
                 if (connectButton) {
