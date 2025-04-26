@@ -1,0 +1,194 @@
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: #ffffff;
+    background-color: #0D1422;
+    margin: 0;
+}
+
+header {
+    background-color: #1A2A44;
+    color: white;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid #FFC107;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #FFC107;
+}
+
+.logo-img {
+    max-width: 150px;
+}
+
+.hero {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(90deg, #1A2A44, #0D1422);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.content-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #1A2A44;
+}
+
+.content-section h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.content-section p {
+    font-size: 1rem;
+    color: #d1d5db;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+.content-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.content-section ul li {
+    font-size: 1rem;
+    color: #d1d5db;
+    margin: 10px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #FFC107;
+    color: #0D1422;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #e0a800;
+}
+
+#wallet-info {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#wallet-info p {
+    font-size: 1rem;
+    color: #d1d5db;
+}
+
+footer {
+    background-color: #1A2A44;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #FFC107;
+}
+
+.risk-warning {
+    font-style: italic;
+    color: #ff4444;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+article {
+    margin-bottom: 30px;
+}
+
+article h2 {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#content-container {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#content-container.loaded {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav ul li {
+        margin: 5px;
+    }
+    nav ul li a {
+        padding: 8px 15px;
+        font-size: 1rem;
+    }
+    .hero {
+        padding: 40px 15px;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .content-section {
+        padding: 30px 15px;
+    }
+    .content-section h1 {
+        font-size: 1.8rem;
+    }
+}
