@@ -1,0 +1,58 @@
+{
+    "branding": {
+        "project_name": "AIMPACT",
+        "token_symbol": "AIM",
+        "logo_path": "assets/images/aim_logo.png",
+        "primary_color": "#00A3E0",
+        "secondary_color": "#4B0082",
+        "tagline": "Aim High, Win Big",
+        "risk_warning": "Cryptocurrency investments are speculative and carry high risk. Consult a financial advisor."
+    },
+    "templates": [
+        {
+            "path": "website/main/index.html",
+            "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>{project_name}</title>\n    <link rel=\"stylesheet\" href=\"styles/styles.css\">\n    <script src=\"https://unpkg.com/xrpl@2.9.0/dist/xrpl.min.js\"></script>\n    <script src=\"../scripts/main.js\" defer></script>\n</head>\n<body>\n    <header>\n        <nav>\n            <img src=\"{logo_path}\" alt=\"{project_name} Logo\" class=\"logo\">\n            <ul>\n                <li><a href=\"index.html#home\" data-section=\"home\">Home</a></li>\n                <li><a href=\"index.html#about\" data-section=\"about\">About</a></li>\n                <li><a href=\"index.html#tokenomics\" data-section=\"tokenomics\">Tokenomics</a></li>\n                <li><a href=\"index.html#team\" data-section=\"team\">Team</a></li>\n                <li><a href=\"index.html#roadmap\" data-section=\"roadmap\">Roadmap</a></li>\n                <li><a href=\"index.html#blog\" data-section=\"blog\">Blog</a></li>\n                <li><a href=\"index.html#contact\" data-section=\"contact\">Contact</a></li>\n            </ul>\n        </nav>\n    </header>\n    <main id=\"content-container\">\n        <!-- Sections will be injected here by main.js -->\n    </main>\n    <footer>\n        <p>© 2025 {project_name}. All rights reserved.</p>\n        <p class=\"risk-warning\">{risk_warning}</p>\n    </footer>\n</body>\n</html>"
+        },
+        {
+            "path": "website/main/sections/home.html",
+            "content": "<section id=\"home\" class=\"hero\">\n    <h1>{project_name}</h1>\n    <p>{tagline}</p>\n    <button id=\"connect-wallet\" class=\"btn\">Connect Wallet</button>\n    <div id=\"wallet-info\" style=\"display: none;\">\n        <p>Wallet Address: <span id=\"wallet-address\"></span></p>\n        <p>{token_symbol} Balance: <span id=\"token-balance\">0</span></p>\n    </div>\n</section>"
+        },
+        {
+            "path": "website/main/sections/about.html",
+            "content": "<section id=\"about\" class=\"content-section\">\n    <h1>About {project_name}</h1>\n    <p>{project_name} is a revolutionary cryptocurrency project built on the XRP Ledger, integrating artificial intelligence to optimize transaction processing and enhance user experience. Our mission is to make crypto accessible, efficient, and impactful through AI-driven innovation.</p>\n</section>"
+        },
+        {
+            "path": "website/main/sections/tokenomics.html",
+            "content": "<section id=\"tokenomics\" class=\"content-section\">\n    <h1>Tokenomics</h1>\n    <p>Total Supply: 1,000,000,000 {token_symbol} tokens</p>\n    <p>Distribution:</p>\n    <ul>\n        <li>40% Community</li>\n        <li>20% Team</li>\n        <li>20% Development</li>\n        <li>10% Marketing</li>\n        <li>10% Reserve</li>\n    </ul>\n    <p>Utility: {token_symbol} tokens are used for staking, governance, and accessing AI-driven features.</p>\n</section>"
+        },
+        {
+            "path": "website/main/sections/team.html",
+            "content": "<section id=\"team\" class=\"content-section\">\n    <h1>Our Team</h1>\n    <ul>\n        <li>Nathan Williams - Founder & CEO</li>\n        <li>Jane Doe - Chief Technology Officer</li>\n        <li>John Smith - Crypto Advisor</li>\n        <li>Sarah Lee - AI Research Lead</li>\n    </ul>\n</section>"
+        },
+        {
+            "path": "website/main/sections/roadmap.html",
+            "content": "<section id=\"roadmap\" class=\"content-section\">\n    <h1>Roadmap</h1>\n    <ul>\n        <li><strong>Q1 2025:</strong> Project inception, team assembly, and initial AI development</li>\n        <li><strong>Q2 2025:</strong> Whitepaper release, token presale, and community building</li>\n        <li><strong>Q3 2025:</strong> Mainnet launch with AI transaction optimization</li>\n        <li><strong>Q4 2025:</strong> Partnerships, exchange listings, and ecosystem expansion</li>\n    </ul>\n</section>"
+        },
+        {
+            "path": "website/main/sections/blog.html",
+            "content": "<section id=\"blog\" class=\"content-section\">\n    <h1>Blog</h1>\n    <article>\n        <h2>Welcome to the {project_name} Blog</h2>\n        <p>Posted on April 25, 2025</p>\n        <p>Welcome to the {project_name} blog! Stay tuned for updates, announcements, and insights into our journey as we revolutionize cryptocurrency with AI and the XRP Ledger.</p>\n    </article>\n</section>"
+        },
+        {
+            "path": "website/main/sections/contact.html",
+            "content": "<section id=\"contact\" class=\"content-section\">\n    <h1>Contact Us</h1>\n    <p>Email: <a href=\"mailto:info@aimpact.com\">info@aimpact.com</a></p>\n    <p>Twitter: <a href=\"https://twitter.com/aimpactcrypto\" target=\"_blank\">@aimpactcrypto</a></p>\n    <p>Discord: <a href=\"https://discord.gg/aimpact\" target=\"_blank\">Join Our Community</a></p>\n    <p class=\"risk-warning\">{risk_warning}</p>\n</section>"
+        },
+        {
+            "path": "website/main/styles/styles.css",
+            "content": "body {{\n    font-family: Arial, sans-serif;\n    color: #333;\n    background-color: #f4f4f4;\n    margin: 0;\n}}\nheader {{\n    background-color: {primary_color};\n    color: white;\n    padding: 20px;\n    text-align: center;\n    position: sticky;\n    top: 0;\n    z-index: 10;\n}}\nnav ul {{\n    list-style: none;\n    padding: 0;\n}}\nnav ul li {{\n    display: inline;\n    margin: 0 15px;\n}}\nnav a {{\n    color: white;\n    text-decoration: none;\n}}\nnav a:hover {{\n    color: {secondary_color};\n}}\n.logo {{\n    max-width: 150px;\n    margin-bottom: 10px;\n}}\n.hero {{\n    padding: 50px;\n    text-align: center;\n    background: linear-gradient(90deg, {primary_color}, {secondary_color});\n    color: white;\n}}\n.content-section {{\n    padding: 40px;\n    text-align: center;\n}}\nh1, h2 {{\n    color: {primary_color};\n}}\n.btn {{\n    display: inline-block;\n    padding: 10px 20px;\n    background-color: {secondary_color};\n    color: white;\n    text-decoration: none;\n    border-radius: 5px;\n    margin-top: 20px;\n    cursor: pointer;\n}}\n.btn:hover {{\n    background-color: {primary_color};\n}}\n#wallet-info {{\n    margin-top: 20px;\n    padding: 10px;\n    background: rgba(255, 255, 255, 0.1);\n    border-radius: 5px;\n}}\nfooter {{\n    background-color: {primary_color};\n    color: white;\n    padding: 10px;\n    text-align: center;\n    position: fixed;\n    bottom: 0;\n    width: 100%;\n}}\n.risk-warning {{\n    font-style: italic;\n    color: #ff4444;\n    margin-top: 20px;\n}}\narticle {{\n    margin-bottom: 20px;\n}}\n@media (max-width: 768px) {{\n    nav ul li {{\n        display: block;\n        margin: 10px 0;\n    }}\n    .hero {{\n        padding: 20px;\n    }}\n}}"
+        },
+        {
+            "path": "scripts/main.js",
+            "content": "async function connectWallet() {{\n    try {{\n        const client = new xrpl.Client(\"wss://s.altnet.rippletest.net:51233\");\n        await client.connect();\n        const account = prompt(\"Enter your XRPL wallet address for testing:\");\n        if (!account) throw new Error(\"No wallet address provided\");\n        const response = await client.request({{\n            command: \"account_info\",\n            account: account\n        }});\n        const balance = await client.request({{\n            command: \"account_lines\",\n            account: account,\n            ledger_index: \"validated\"\n        }});\n        const aimBalance = balance.result.lines.find(line => line.currency === \"{token_symbol}\")?.balance || \"0\";\n        document.getElementById(\"wallet-address\").textContent = account;\n        document.getElementById(\"token-balance\").textContent = aimBalance;\n        document.getElementById(\"wallet-info\").style.display = \"block\";\n        await client.disconnect();\n    }} catch (error) {{\n        console.error(\"Wallet connection error:\", error);\n        alert(\"Failed to connect wallet. Please try again.\");\n    }}\n}}\n\n// Function to load section content dynamically\nfunction loadSection(section) {{\n    fetch(`sections/${{section}}.html`)\n        .then(response => {{\n            if (!response.ok) throw new Error(`Failed to load ${{section}} section`);\n            return response.text();\n        }})\n        .then(html => {{\n            const container = document.getElementById('content-container');\n            container.innerHTML = html;\n            if (section === 'home') {{\n                const connectButton = document.getElementById('connect-wallet');\n                if (connectButton) {{\n                    connectButton.addEventListener('click', connectWallet);\n                }}\n            }}\n        }})\n        .catch(error => console.error(error));\n}}\n\n// Load section based on URL hash or default to home\ndocument.addEventListener('DOMContentLoaded', () => {{\n    const section = window.location.hash.replace('#', '') || 'home';\n    loadSection(section);\n}});\n\n// Handle navigation clicks\ndocument.querySelectorAll('nav a').forEach(link => {{\n    link.addEventListener('click', (e) => {{\n        const section = e.target.getAttribute('data-section');\n        if (section) {{\n            loadSection(section);\n        }}\n    }});\n}});"
+        }
+    ],
+    "directories": [
+        "website/main",
+        "website/presale",
+        "scripts"
+    ]
+}

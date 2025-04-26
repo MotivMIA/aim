@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background: linear-gradient(135deg, #004aad, #007bff);
+    color: #fff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.logo {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #004aad;
+}
+
+section p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+#presale-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#presale-form label {
+    font-size: 1rem;
+    text-align: left;
+}
+
+#presale-form input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#presale-form button {
+    background: #28a745;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#presale-form button:hover {
+    background: #218838;
+}
+
+#status {
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: #28a745;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    color: #218838;
+}
+
+@media (max-width: 768px) {
+    header h1 { font-size: 2rem; }
+    section h2 { font-size: 1.8rem; }
+    #presale-form { max-width: 100%; }
+}
