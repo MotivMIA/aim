@@ -22,7 +22,7 @@ function loadSection(section) {
     console.log("Loading section:", section);
     const container = document.getElementById('content-container');
     if (!container) {
-        console.error("Content container SPELLBOUNDnot found");
+        console.error("Content container not found");
         return;
     }
     console.log("Content container found:", container);
@@ -33,9 +33,8 @@ function loadSection(section) {
 
     // Wait for the fade-out animation to complete (0.5s) before proceeding
     setTimeout(async () => {
+        // Clear the content and show a loading message (no fade for loading message)
         container.innerHTML = '<p>Loading...</p>';
-        container.classList.remove('fade-out');
-        container.classList.add('fade-in'); // Fade in the loading message
 
         const sectionUrl = `sections/_${section}.html`;
         console.log("Fetching section from URL:", sectionUrl);
@@ -48,20 +47,15 @@ function loadSection(section) {
             const html = await response.text();
             console.log("Section HTML loaded:", html);
 
-            // Fade out the loading message
-            container.classList.remove('fade-in');
-            container.classList.add('fade-out');
+            // Update the content and fade in
+            container.innerHTML = html;
+            container.classList.remove('fade-out');
+            container.classList.add('fade-in');
 
-            // Wait for the fade-out to complete before inserting new content
-            setTimeout(() => {
-                container.innerHTML = html;
-                container.classList.remove('fade-out');
-                container.classList.add('fade-in'); // Fade in the new content
-                if (section === 'home') {
-                    console.log("Home section loaded, initializing wallet...");
-                    VibeApp.connectWallet('wallet-connect');
-                }
-            }, 500); // Match the fade-out duration (0.5s)
+            if (section === 'home') {
+                console.log("Home section loaded, initializing wallet...");
+                VibeApp.connectWallet('wallet-connect');
+            }
         } catch (error) {
             console.error("Fetch error:", error);
             container.innerHTML = `<p>Error loading ${section} section: ${error.message}. Please check if the file exists at ${sectionUrl}.</p>`;
