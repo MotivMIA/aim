@@ -19,33 +19,62 @@ async function connectWallet() {
 }
 
 function loadSection(section) {
+    console.log("Loading section:", section);
     const container = document.getElementById('content-container');
-    container.classList.remove('loaded');
-    container.innerHTML = '<p>Loading...</p>';
+    if (!container) {
+        console.error("Content container SPELLBOUNDnot found");
+        return;
+    }
+    console.log("Content container found:", container);
 
-    fetch(`sections/_${section}.html`)
-        .then(response => {
-            if (!response.ok) throw new Error(`Failed to load ${section} section: ${response.statusText}`);
-            return response.text();
-        })
-        .then(html => {
-            container.innerHTML = html;
-            container.classList.add('loaded');
-            if (section === 'home') {
-                const connectButton = document.getElementById('connect-wallet');
-                if (connectButton) {
-                    connectButton.addEventListener('click', connectWallet);
+    // Fade out the current content
+    container.classList.remove('fade-in');
+    container.classList.add('fade-out');
+
+    // Wait for the fade-out animation to complete (0.5s) before proceeding
+    setTimeout(async () => {
+        container.innerHTML = '<p>Loading...</p>';
+        container.classList.remove('fade-out');
+        container.classList.add('fade-in'); // Fade in the loading message
+
+        const sectionUrl = `sections/_${section}.html`;
+        console.log("Fetching section from URL:", sectionUrl);
+
+        try {
+            const response = await fetch(sectionUrl);
+            console.log("Fetch response status:", response.status, response.statusText);
+            console.log("Fetch response URL:", response.url);
+            if (!response.ok) throw new Error(`Failed to load ${section} section: ${response.status} ${response.statusText}`);
+            const html = await response.text();
+            console.log("Section HTML loaded:", html);
+
+            // Fade out the loading message
+            container.classList.remove('fade-in');
+            container.classList.add('fade-out');
+
+            // Wait for the fade-out to complete before inserting new content
+            setTimeout(() => {
+                container.innerHTML = html;
+                container.classList.remove('fade-out');
+                container.classList.add('fade-in'); // Fade in the new content
+                if (section === 'home') {
+                    console.log("Home section loaded, initializing wallet...");
+                    VibeApp.connectWallet('wallet-connect');
                 }
-            }
-        })
-        .catch(error => {
+            }, 500); // Match the fade-out duration (0.5s)
+        } catch (error) {
             console.error("Fetch error:", error);
-            container.innerHTML = `<p>Error loading section: ${error.message}</p>`;
-        });
+            container.innerHTML = `<p>Error loading ${section} section: ${error.message}. Please check if the file exists at ${sectionUrl}.</p>`;
+            container.classList.remove('fade-out');
+            container.classList.add('fade-in');
+        }
+    }, 500); // Match the fade-out duration (0.5s)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOMContentLoaded event fired");
     const section = window.location.hash.replace('#', '') || 'home';
+    console.log("Initial section to load:", section);
     loadSection(section);
 });
 
@@ -54,6 +83,7 @@ document.querySelectorAll('nav a').forEach(link => {
         e.preventDefault();
         const section = e.target.getAttribute('data-section');
         if (section) {
+            console.log("Nav link clicked, loading section:", section);
             loadSection(section);
             window.history.pushState(null, null, `#${section}`);
         }
