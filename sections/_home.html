@@ -1,9 +1,10 @@
 <section id="home" class="hero">
-      <h1>AIMPACT</h1>
-      <p>Feel the Vibe, Join the Tribe</p>
-      <button id="connect-wallet" class="btn">Connect Wallet</button>
-      <div id="wallet-info" style="display: none;">
-          <p>Wallet Address: <span id="wallet-address"></span></p>
-          <p>VIBE Balance: <span id="token-balance">0</span></p>
-      </div>
-  </section>
+    <h1>AIMPACT</h1>
+    <p>Feel the Vibe, Join the Tribe</p>
+    <div id="wallet-connect"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            VibeApp.connectWallet('wallet-connect');
+        });
+    </script>
+</section>

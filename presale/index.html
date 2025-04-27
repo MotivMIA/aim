@@ -1,36 +1,38 @@
 <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>AIMPACT Presale</title>
-      <link rel="stylesheet" href="../css/main.css">
-      <script src="../js/main.js" defer></script>
-  </head>
-  <body>
-      <header>
-          <nav>
-              <div class="logo">
-                  <img src="../assets/images/aim_logo.png" alt="AIMPACT Logo" class="logo-img">
-              </div>
-              <ul>
-                  <li><a href="../index.html">Main Site</a></li>
-              </ul>
-          </nav>
-      </header>
-      <main>
-          <section id="presale" class="hero">
-              <h1>VIBE Token Presale</h1>
-              <p>Join the VIBE community by participating in our presale. Secure your tokens before the main launch!</p>
-              <button id="buy-tokens" class="btn">Buy VIBE Tokens</button>
-              <div id="presale-info" style="display: none;">
-                  <p>Tokens Purchased: <span id="token-amount">0</span> VIBE</p>
-              </div>
-          </section>
-      </main>
-      <footer>
-          <p>© 2025 AIMPACT. All rights reserved.</p>
-          <p class="risk-warning">Cryptocurrency investments are speculative and carry high risk. Consult a financial advisor.</p>
-      </footer>
-  </body>
-  </html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIMPACT Presale</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../app/vibe-app.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../assets/images/aim_logo.png" alt="AIMPACT Logo" class="logo-img">
+            </div>
+            <ul>
+                <li><a href="../index.html">Main Site</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="presale" class="hero">
+            <h1>SVIP Token Presale</h1>
+            <p>Join the VIBE community by participating in our presale. Secure your tokens before the main launch!</p>
+            <div id="presale-buy"></div>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    VibeApp.buyTokens('presale-buy', 1000);
+                });
+            </script>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 AIMPACT. All rights reserved.</p>
+        <p class="risk-warning">Cryptocurrency investments are speculative and carry high risk. Consult a financial advisor.</p>
+    </footer>
+</body>
+</html>
