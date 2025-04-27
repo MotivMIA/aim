@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIMPACT</title>
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/main.js" defer></script>
 </head>
 <body>
     <header>
@@ -14,22 +13,30 @@
                 <img src="assets/images/aim_logo.png" alt="AIMPACT Logo" class="logo-img">
             </div>
             <ul>
-                <li><a href="#" data-section="home">Home</a></li>
-                <li><a href="#" data-section="about">About</a></li>
-                <li><a href="#" data-section="tokenomics">Tokenomics</a></li>
-                <li><a href="#" data-section="team">Team</a></li>
-                <li><a href="#" data-section="roadmap">Roadmap</a></li>
-                <li><a href="#" data-section="blog">Blog</a></li>
-                <li><a href="#" data-section="contact">Contact</a></li>
+                <li><a href="#home" data-section="home">Home</a></li>
+                <li><a href="#about" data-section="about">About</a></li>
+                <li><a href="#tokenomics" data-section="tokenomics">Tokenomics</a></li>
+                <li><a href="#roadmap" data-section="roadmap">Roadmap</a></li>
+                <li><a href="#team" data-section="team">Team</a></li>
+                <li><a href="#blog" data-section="blog">Blog</a></li>
+                <li><a href="#contact" data-section="contact">Contact</a></li>
+                <li><a href="presale/">Presale</a></li>
             </ul>
         </nav>
     </header>
-    <main id="content-container">
-        <!-- Section content will be loaded here -->
+    <main>
+        <div id="content-container" class="fade-in"></div>
     </main>
     <footer>
         <p>© 2025 AIMPACT. All rights reserved.</p>
         <p class="risk-warning">Cryptocurrency investments are speculative and carry high risk. Consult a financial advisor.</p>
     </footer>
+    <script src="js/main.js"></script>
+    <script src="app/vibe-app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            VibeApp.connectWallet('wallet-connect');
+        });
+    </script>
 </body>
 </html>
