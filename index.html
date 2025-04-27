@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'">
     <title>AIMPACT</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -12,16 +13,24 @@
             <div class="logo">
                 <img src="assets/images/aim_logo.png" alt="AIMPACT Logo" class="logo-img">
             </div>
-            <ul>
-                <li><a href="#home" data-section="home">Home</a></li>
-                <li><a href="#about" data-section="about">About</a></li>
-                <li><a href="#tokenomics" data-section="tokenomics">Tokenomics</a></li>
-                <li><a href="#roadmap" data-section="roadmap">Roadmap</a></li>
-                <li><a href="#team" data-section="team">Team</a></li>
-                <li><a href="#blog" data-section="blog">Blog</a></li>
-                <li><a href="#contact" data-section="contact">Contact</a></li>
-                <li><a href="presale/">Presale</a></li>
-            </ul>
+            <div class="nav-right">
+                <button class="hamburger" aria-label="Toggle navigation">
+                    <span>☰</span>
+                </button>
+                <div id="header-wallet"></div>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="#home" data-section="home">Home</a></li>
+                    <li><a href="#about" data-section="about">About</a></li>
+                    <li><a href="#tokenomics" data-section="tokenomics">Tokenomics</a></li>
+                    <li><a href="#roadmap" data-section="roadmap">Roadmap</a></li>
+                    <li><a href="#team" data-section="team">Team</a></li>
+                    <li><a href="#blog" data-section="blog">Blog</a></li>
+                    <li><a href="#contact" data-section="contact">Contact</a></li>
+                    <li><a href="https://presale.vibepact.com/">Presale</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
     <main>
@@ -32,11 +41,6 @@
         <p class="risk-warning">Cryptocurrency investments are speculative and carry high risk. Consult a financial advisor.</p>
     </footer>
     <script src="js/main.js"></script>
-    <script src="app/vibe-app.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            VibeApp.connectWallet('wallet-connect');
-        });
-    </script>
+    <script defer src="app/vibe-app.js"></script>
 </body>
 </html>

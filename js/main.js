@@ -1,21 +1,20 @@
-async function connectWallet() {
-    try {
-        const account = prompt("Enter your XRPL wallet address for testing:");
-        if (!account) throw new Error("No wallet address provided");
-        const response = await fetch(`https://aimpact-backend.onrender.com/api/account_info?account=${account}`);
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error || 'Failed to fetch account info');
-        const balanceResponse = await fetch(`https://aimpact-backend.onrender.com/api/account_lines?account=${account}`);
-        const balanceData = await balanceResponse.json();
-        if (!balanceResponse.ok) throw new Error(balanceData.error || 'Failed to fetch account lines');
-        const vibeBalance = balanceData.lines.find(line => line.currency === "VIP")?.balance || "0";
-        document.getElementById("wallet-address").textContent = account;
-        document.getElementById("token-balance").textContent = vibeBalance;
-        document.getElementById("wallet-info").style.display = "block";
-    } catch (error) {
-        console.error("Wallet connection error:", error);
-        alert("Failed to connect wallet: " + error.message);
+function adjustMainMargin() {
+    const header = document.querySelector('header');
+    const main = document.querySelector('main');
+    if (header && main) {
+        const headerHeight = header.offsetHeight;
+        main.style.marginTop = `${headerHeight}px`;
     }
+}
+
+function toggleNavMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    navMenu.classList.toggle('active');
+}
+
+function closeNavMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    navMenu.classList.remove('active');
 }
 
 function loadSection(section) {
@@ -48,13 +47,11 @@ function loadSection(section) {
             container.classList.remove('fade-out');
             container.classList.add('fade-in');
 
-            if (section === 'home') {
-                console.log("Home section loaded, initializing wallet...");
-                VibeApp.connectWallet('wallet-connect');
-            }
+            // Adjust margin after loading new content
+            adjustMainMargin();
         } catch (error) {
             console.error("Fetch error:", error);
-            container.innerHTML = `<p>Error loading ${section} section: ${error.message}. Please check if the file exists at ${sectionUrl}.</p>`;
+            container.innerHTML = `<p>Error loading ${section} section: ${error.message}. Please check if the file exists atMuseum ${sectionUrl}.</p>`;
             container.classList.remove('fade-out');
             container.classList.add('fade-in');
         }
@@ -63,6 +60,14 @@ function loadSection(section) {
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOMContentLoaded event fired");
+    adjustMainMargin();
+    window.addEventListener('resize', adjustMainMargin);
+
+    const hamburger = document.querySelector('.hamburger');
+    if (hamburger) {
+        hamburger.addEventListener('click', toggleNavMenu);
+    }
+
     const section = window.location.hash.replace('#', '') || 'home';
     console.log("Initial section to load:", section);
     loadSection(section);
@@ -76,6 +81,7 @@ document.querySelectorAll('nav a').forEach(link => {
             console.log("Nav link clicked, loading section:", section);
             loadSection(section);
             window.history.pushState(null, null, `#${section}`);
+            closeNavMenu();
         }
     });
 });
