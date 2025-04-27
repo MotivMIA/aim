@@ -27,13 +27,10 @@ function loadSection(section) {
     }
     console.log("Content container found:", container);
 
-    // Fade out the current content
     container.classList.remove('fade-in');
     container.classList.add('fade-out');
 
-    // Wait for the fade-out animation to complete (0.5s) before proceeding
     setTimeout(async () => {
-        // Clear the content and show a loading message (no fade for loading message)
         container.innerHTML = '<p>Loading...</p>';
 
         const sectionUrl = `sections/_${section}.html`;
@@ -47,7 +44,6 @@ function loadSection(section) {
             const html = await response.text();
             console.log("Section HTML loaded:", html);
 
-            // Update the content and fade in
             container.innerHTML = html;
             container.classList.remove('fade-out');
             container.classList.add('fade-in');
@@ -62,7 +58,7 @@ function loadSection(section) {
             container.classList.remove('fade-out');
             container.classList.add('fade-in');
         }
-    }, 500); // Match the fade-out duration (0.5s)
+    }, 500);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
