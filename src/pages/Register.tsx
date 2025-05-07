@@ -1,47 +1,26 @@
-import { useForm } from "react-hook-form";
-import { useAuthQuery } from "../hooks/useAuthQuery";
+import { useForm } from 'react-hook-form';
+import useAuthQuery from '../hooks/useAuthQuery';
 
-interface RegisterForm {
+type RegisterForm = {
   email: string;
   password: string;
-}
+};
 
 const Register: React.FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<RegisterForm>();
-  const { authenticate } = useAuthQuery();
+  const { register, handleSubmit } = useForm<RegisterForm>();
+  const { register: registerUser } = useAuthQuery();
 
   const onSubmit = async (data: RegisterForm) => {
-    await authenticate({
-      url: "/auth/register",
-      data,
-    });
+    await registerUser(data);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto mt-8">
-      <div className="mb-4">
-        <label htmlFor="email" className="block text-gray-700">Email</label>
-        <input
-          id="email"
-          type="email"
-          {...register("email", { required: "Email is required" })}
-          className="w-full p-2 border rounded"
-        />
-        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
-      </div>
-      <div className="mb-4">
-        <label htmlFor="password" className="block text-gray-700">Password</label>
-        <input
-          id="password"
-          type="password"
-          {...register("password", { required: "Password is required" })}
-          className="w-full p-2 border rounded"
-        />
-        {errors.password && <p className="text-red-500">{errors.password.message}</p>}
-      </div>
-      <button type="submit" className="w-full p-2 bg-blue-600 text-white rounded">
-        Register
-      </button>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <label>Email</label>
+      <input {...register('email')} />
+      <label>Password</label>
+      <input type="password" {...register('password')} />
+      <button type="submit">Register</button>
     </form>
   );
 };
